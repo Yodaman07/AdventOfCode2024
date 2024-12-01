@@ -7,6 +7,21 @@
 
 using namespace std;
 
+int getSimilarityScore(vector<int>& leftSide, vector<int>& rightSide){ //Made references as they don't need to be copied
+    int similarityScore = 0;
+    for (int leftVal: leftSide){
+        int occurrences = 0;
+        for (int rightVal: rightSide){
+            if (leftVal == rightVal){
+                occurrences++;
+            }
+        }
+        similarityScore += (leftVal*occurrences);
+    }
+    return similarityScore;
+}
+
+
 int main() {
     string line;
     ifstream Input;
@@ -33,6 +48,11 @@ int main() {
 
         dist += abs(leftSide.at(i) - rightSide.at(i));
     }
-    cout << dist;
+    cout << dist << endl;
+
+    cout << getSimilarityScore(leftSide, rightSide) << endl;
     return 0;
 }
+
+
+
