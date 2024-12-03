@@ -4,4 +4,5 @@ project(AdventOfCode2024)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(AdventOfCode2024
-        Day1/DayOne.cpp)
+        Day1/DayOne.cpp
+        Day2/DayTwo.cpp)
