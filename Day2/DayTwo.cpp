@@ -26,6 +26,43 @@ vector<string> splitText(string text, char delimiter){ //delimiter is the charac
     return result;
 }
 
+bool problemDampener(vector<string> report){
+
+    for (int i = 0; i < report.size(); ++i){
+        vector<string> r = report; // copy of the report
+        r.erase(r.begin()+i);
+//        for (string val : r){
+//            cout << val << endl;
+//        }
+
+
+        int diff;
+        bool works = true;
+        bool increasing = false;
+        if (  stoi(r.at(1)) > stoi(r.at(0))  ) {
+            increasing = true;
+        }
+
+        for (int i = 1; i < r.size(); ++i){
+            if (increasing) {diff = stoi(r.at(i)) - stoi(r.at(i-1));}
+            else {diff = stoi(r.at(i-1)) - stoi(r.at(i)) ;}
+
+            if ( (diff > 0) && (diff <= 3) ) {
+                continue;
+            }else{
+                works = false;
+            }
+        }
+
+        if (works) {return true;}
+
+
+        //check if safe
+    }
+
+    return false;
+}
+
 bool evaluateReports(string reports){ // True is safe, false is unsafe
 
     vector<string> sep = splitText(reports, ' ');
@@ -43,13 +80,12 @@ bool evaluateReports(string reports){ // True is safe, false is unsafe
         if ( (diff > 0) && (diff <= 3) ) {
             continue;
         }else{
-            return false;
+            return problemDampener(sep);
         }
     }
 
     return true;
 }
-
 
 int main(){
 
